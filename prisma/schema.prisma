@@ -13,3 +13,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum MailType {
+  orderConfirmation
+  paymentConfirmation
+}
+
+model Mail {
+  id String @id @default(uuid())
+  idUser String
+  mailDestination String
+  mailContent String
+  mailType MailType
+  createdAt DateTime @default(now())
+  updateAt DateTime @default(now())
+
+}
